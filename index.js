@@ -10,6 +10,7 @@ const resetBtn = document.getElementById("reset");
 let colorPick = [];
 let colorTheme = [];
 let slider = document.getElementById("slider");
+let currentState = false;
 
 //Creating default 16x16 grid of divs
 
@@ -23,34 +24,28 @@ function divCreator(sliderVal) {
     newDiv.style.border = "0.5px solid rgb(200, 200, 200)";
     divContainer.appendChild(newDiv);
   }
+  //add toggleColoring option every time new grid is created
+  divContainer.addEventListener("click", toggleColoring);
 }
 divCreator(16);
 
-//Creating an event for coloring divs on click when hovering over
-
-function colorCells() {
+//Create an event for coloring divs when hovering over
+//Add option of activating and deactivating coloring on mouse click
+function toggleColoring() {
   const cells = document.querySelectorAll(".cell");
 
-  cells.forEach((cell) => {
-    cell.addEventListener("mouseleave", function () {
-      colorChoice();
-      cell.style.backgroundColor = colorPick;
+  if (!currentState) {
+    cells.forEach((cell) => {
+      cell.addEventListener("mouseleave", colorChoice);
     });
-  });
-}
-
-function deactivateColoring() {
-  const cells = document.querySelectorAll(".cell");
-
-  cells.forEach((cell) => {
-    cell.addEventListener("mouseleave", function () {
-      cell.style.backgroundColor = "white";
+    currentState = true;
+  } else {
+    cells.forEach((cell) => {
+      cell.removeEventListener("mouseleave", colorChoice);
     });
-  });
+    currentState = false;
+  }
 }
-//Activating and deactivating coloring on mouse click
-divContainer.addEventListener("click", colorCells);
-divContainer.addEventListener("click", deactivateColoring);
 
 //Creating function and events for different color choices
 
@@ -64,18 +59,25 @@ ownColor.addEventListener("click", function () {
   colorTheme = "ownColor";
 });
 
-function colorChoice() {
+function colorChoice(e) {
   switch (colorTheme) {
     case "rainbow":
       let randomN = Math.floor(Math.random() * 360);
       colorPick = `hsl(${randomN}, 100%, 50%)`;
+      e.target.style.backgroundColor = colorPick;
       break;
     case "black":
       colorPick = "black";
+      e.target.style.backgroundColor = colorPick;
       break;
     case "ownColor":
       let userPick = document.getElementById("userPick");
       colorPick = userPick.value;
+      e.target.style.backgroundColor = colorPick;
+      break;
+    case "erase":
+      colorPick = "white";
+      e.target.style.backgroundColor = colorPick;
       break;
   }
 }
