@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch a Sketch</title>
+    <link href="./style.css" type="text/css" rel="stylesheet" />
+    <link href="./reset.css" type="text/css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Iceland&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header"><h1>Etch a Sketch</h1></div>
+    <div class="buttons">
+      <button class="blackClr">BLACK</button>
+      <button id="rainbow">RAINBOW</button>
+      <button id="ownColor">
+        CHOOSE YOUR OWN
+        <input id="userPick" value="user" type="color" />
+      </button>
+      <button id="gradDark">GRADIENT</button>
+      <button id="reset">RESET</button>
+    </div>
+    <div class="container"></div>
+    <div>
+      <input type="range" value="16" min="1" max="60" id="slider" />
+    </div>
+  </body>
+  <script src="./index.js"></script>
+</html>

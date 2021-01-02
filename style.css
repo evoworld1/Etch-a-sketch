@@ -1,0 +1,18 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  width: 45vw;
+  height: 45vw;
+  border: 2px solid black;
+}
+
+.cell:hover {
+  background-color: rgb(157, 220, 223) !important;
+}
+
+.buttons {
+  display: flex;
+}
