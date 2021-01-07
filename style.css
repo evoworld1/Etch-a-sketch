@@ -1,18 +1,141 @@
-.body {
-  width: 100vw;
+:root {
+  --bg-color: #1f2833;
+  --main-color: #64fcf2;
+  --secondary-color: rgb(217, 122, 255);
+}
+
+.main {
+  margin-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--main-color);
   height: 100vh;
 }
 
+body {
+  width: auto;
+  height: auto;
+  background-color: hsla(260, 60%, 2%, 0.95);
+  overflow: auto;
+}
+body::-webkit-scrollbar {
+  width: 0.25rem;
+  background: #0b0c10;
+}
+
+body::-webkit-scrollbar-track {
+  background: #64fcf2;
+}
+
+.nav-bar {
+  width: 5rem;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--bg-color);
+  transition: 350ms ease-in;
+  overflow: hidden;
+}
+
+.nav-bar:hover {
+  width: 16rem;
+  transition: 350ms ease-out;
+}
+
+.nav-logo {
+  display: flex;
+  flex-flow: column;
+  width: 16rem;
+  filter: grayscale(100%) opacity(0.8);
+  padding-left: 1rem;
+  background-color: #171d25;
+}
+
+.nav-logo svg {
+  width: 3rem;
+  color: var(--secondary-color);
+}
+
+.nav-bar:hover .nav-logo {
+  filter: grayscale(0%) opacity(1);
+  transition: filter 200ms ease-in;
+}
+
+.nav-btn {
+  width: 16rem;
+  height: auto;
+  background: transparent;
+  border: none;
+  color: rgb(217, 122, 255);
+  font-weight: bolder;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  transition: background-color 300ms ease-out;
+  filter: grayscale(100%) opacity(0.8);
+  transition: filter 200ms ease-out;
+}
+
+.nav-btn:hover,
+.nav-logo:hover {
+  background-color: #171d25;
+  filter: grayscale(0%) opacity(1);
+  transition: 300ms ease-in;
+  transition: filter 200ms ease-in;
+}
+
+.nav-btn svg {
+  color: var(--main-color);
+  width: 3rem;
+}
+
+.text-item {
+  padding-left: 30px;
+  align-self: center;
+}
+
+.text-item:hover {
+  transition: 250ms ease-in;
+}
+
+.center {
+  align-items: center;
+}
 .container {
   width: 45vw;
   height: 45vw;
-  border: 2px solid black;
+  margin: auto;
+  border: 5px solid var(--main-color);
+  border-radius: 10px;
 }
 
 .cell:hover {
   background-color: rgb(157, 220, 223) !important;
 }
 
-.buttons {
-  display: flex;
+input[type="color"] {
+  display: block;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0);
+
+  /* Width and height are set to large value in order to
+  fill in the color box with desired option. 
+  Transform had to be applied to get rid of annoying 
+  background of the color box. Other options weren't working. */
+  width: 200rem;
+  height: 200rem;
+  transform: translateX(-10px) translateY(-10px);
+}
+
+.color-input {
+  border: 1px solid var(--main-color);
+  transform: translateY(12px);
+  margin-left: 5px;
+  overflow: hidden; /*overflow had to be hidden as width and height of input[color] is set to large number */
+  width: 2.5rem;
+  height: 20px;
 }
