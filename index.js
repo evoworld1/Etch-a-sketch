@@ -1,9 +1,9 @@
 //Declaring important variables
 
 const divContainer = document.querySelector(".container");
-const buttons = document.querySelector(".buttons");
+const buttons = document.querySelector(".nav-bar");
 const rgbRandom = document.getElementById("rainbow");
-const blackClr = document.querySelector(".blackClr");
+const blackClr = document.getElementById("blackClr");
 const ownColor = document.getElementById("ownColor");
 const gradDarker = document.getElementById("gradDark");
 const resetBtn = document.getElementById("reset");
@@ -22,6 +22,7 @@ function divCreator(sliderVal) {
     const newDiv = document.createElement("div");
     newDiv.classList.add("cell");
     newDiv.style.border = "0.5px solid rgb(200, 200, 200)";
+    newDiv.style.backgroundColor = "white";
     divContainer.appendChild(newDiv);
   }
   //add toggleColoring option every time new grid is created
