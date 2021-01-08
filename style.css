@@ -1,7 +1,11 @@
 :root {
   --bg-color: #1f2833;
   --main-color: #64fcf2;
-  --secondary-color: rgb(217, 122, 255);
+  --secondary-color: rgb(208, 88, 255);
+  --font-main: Iceland, monospace;
+}
+html {
+  min-height: 100%;
 }
 
 .main {
@@ -10,17 +14,36 @@
   flex-direction: column;
   align-items: center;
   color: var(--main-color);
-  height: 100vh;
+  height: 100%;
+  font-family: var(--font-main);
+  /*background: linear-gradient(45deg, var(--main-color), #9341ff);
+  */
+  background: linear-gradient(
+    hsla(260, 60%, 2%, 0.95) 14%,
+    hsla(192, 56%, 43%, 0.95) fixed
+  );
+}
+
+.header {
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  background-clip: text;
+  font-weight: bolder;
+  font-size: 25px;
 }
 
 body {
-  width: auto;
-  height: auto;
-  background-color: hsla(260, 60%, 2%, 0.95);
-  overflow: auto;
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background: linear-gradient(
+    hsla(260, 60%, 2%, 0.95),
+    hsla(192, 56%, 43%, 0.95)
+  );
 }
 body::-webkit-scrollbar {
-  width: 0.25rem;
+  width: 0px;
   background: #0b0c10;
 }
 
@@ -45,15 +68,24 @@ body::-webkit-scrollbar-track {
 .nav-logo {
   display: flex;
   flex-flow: column;
-  width: 16rem;
+  width: 15rem;
   filter: grayscale(100%) opacity(0.8);
   padding-left: 1rem;
   background-color: #171d25;
+  transform: rotate(0deg);
 }
 
 .nav-logo svg {
   width: 3rem;
-  color: var(--secondary-color);
+  color: var(--main-color);
+  transition: 400ms ease-out;
+}
+
+.nav-bar:hover .nav-logo svg {
+  width: 4.5rem;
+  align-self: center;
+  transform: rotate(450deg);
+  transition: 400ms ease-out;
 }
 
 .nav-bar:hover .nav-logo {
@@ -76,6 +108,8 @@ body::-webkit-scrollbar-track {
   transition: background-color 300ms ease-out;
   filter: grayscale(100%) opacity(0.8);
   transition: filter 200ms ease-out;
+  font-family: var(--font-main);
+  font-size: medium;
 }
 
 .nav-btn:hover,
@@ -138,4 +172,14 @@ input[type="color"] {
   overflow: hidden; /*overflow had to be hidden as width and height of input[color] is set to large number */
   width: 2.5rem;
   height: 20px;
+}
+.slider {
+  font-size: 23px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+input[type="range"] {
+  position: relative;
+  width: 100%;
 }
