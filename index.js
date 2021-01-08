@@ -5,7 +5,7 @@ const buttons = document.querySelector(".nav-bar");
 const rgbRandom = document.getElementById("rainbow");
 const blackClr = document.getElementById("blackClr");
 const ownColor = document.getElementById("ownColor");
-const gradDarker = document.getElementById("gradDark");
+const eraserBtn = document.getElementById("eraser");
 const resetBtn = document.getElementById("reset");
 let colorPick = [];
 let colorTheme = [];
@@ -59,6 +59,9 @@ rgbRandom.addEventListener("click", function () {
 ownColor.addEventListener("click", function () {
   colorTheme = "ownColor";
 });
+eraserBtn.addEventListener("click", function () {
+  colorTheme = "eraser";
+});
 
 function colorChoice(e) {
   switch (colorTheme) {
@@ -76,7 +79,7 @@ function colorChoice(e) {
       colorPick = userPick.value;
       e.target.style.backgroundColor = colorPick;
       break;
-    case "erase":
+    case "eraser":
       colorPick = "white";
       e.target.style.backgroundColor = colorPick;
       break;
