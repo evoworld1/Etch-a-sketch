@@ -149,11 +149,6 @@ input[type="color"] {
   outline: none;
   border-radius: 2px;
   background-color: rgba(0, 0, 0, 0);
-
-  /* Width and height are set to large value in order to
-  fill in the color box with desired option. 
-  Transform had to be applied to get rid of annoying 
-  background of the color box. Other options weren't working. */
   width: 200rem;
   height: 200rem;
   transform: translateX(-10px) translateY(-10px);
@@ -163,7 +158,7 @@ input[type="color"] {
   border: 1px solid var(--main-color);
   transform: translateY(12px);
   margin-left: 5px;
-  overflow: hidden; /*overflow had to be hidden as width and height of input[color] is set to large number */
+  overflow: hidden;
   width: 2.5rem;
   height: 20px;
 }
