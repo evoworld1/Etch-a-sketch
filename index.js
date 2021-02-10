@@ -2,11 +2,11 @@
 
 const divContainer = document.querySelector(".container");
 const buttons = document.querySelector(".nav-bar");
-const rgbRandom = document.getElementById("rainbow");
-const blackClr = document.getElementById("blackClr");
-const ownColor = document.getElementById("ownColor");
-const eraserBtn = document.getElementById("eraser");
-const resetBtn = document.getElementById("reset");
+const RandomColors = document.getElementById("rainbow");
+const blackColor = document.getElementById("blackColor");
+const colorPickButton = document.getElementById("colorPickButton");
+const eraserButton = document.getElementById("eraser");
+const resetButton = document.getElementById("reset");
 let colorPick = [];
 let colorTheme = [];
 let slider = document.getElementById("slider");
@@ -25,24 +25,21 @@ function divCreator(sliderVal) {
     newDiv.style.backgroundColor = "white";
     divContainer.appendChild(newDiv);
   }
-  //add toggleColoring option every time new grid is created
   divContainer.addEventListener("click", toggleColoring);
 }
 divCreator(16);
 
-//Create an event for coloring divs when hovering over
-//Add option of activating and deactivating coloring on mouse click
 function toggleColoring() {
   const cells = document.querySelectorAll(".cell");
 
   if (!currentState) {
     cells.forEach((cell) => {
-      cell.addEventListener("mouseleave", colorChoice);
+      cell.addEventListener("mouseleave", optionChoice);
     });
     currentState = true;
   } else {
     cells.forEach((cell) => {
-      cell.removeEventListener("mouseleave", colorChoice);
+      cell.removeEventListener("mouseleave", optionChoice);
     });
     currentState = false;
   }
@@ -50,20 +47,20 @@ function toggleColoring() {
 
 //Creating function and events for different color choices
 
-blackClr.addEventListener("click", function () {
+blackColor.addEventListener("click", function () {
   colorTheme = "black";
 });
-rgbRandom.addEventListener("click", function () {
+RandomColors.addEventListener("click", function () {
   colorTheme = "rainbow";
 });
-ownColor.addEventListener("click", function () {
-  colorTheme = "ownColor";
+colorPickButton.addEventListener("click", function () {
+  colorTheme = "colorPickButton";
 });
-eraserBtn.addEventListener("click", function () {
+eraserButton.addEventListener("click", function () {
   colorTheme = "eraser";
 });
 
-function colorChoice(e) {
+function optionChoice(e) {
   switch (colorTheme) {
     case "rainbow":
       let randomN = Math.floor(Math.random() * 360);
@@ -74,7 +71,7 @@ function colorChoice(e) {
       colorPick = "black";
       e.target.style.backgroundColor = colorPick;
       break;
-    case "ownColor":
+    case "colorPickButton":
       let userPick = document.getElementById("userPick");
       colorPick = userPick.value;
       e.target.style.backgroundColor = colorPick;
@@ -86,9 +83,7 @@ function colorChoice(e) {
   }
 }
 
-//Changing grid size based on slider value
-
-function changeSize() {
+function changeGridSize() {
   let currentGrid = document.querySelectorAll(".cell");
   currentGrid.forEach((div) => {
     return div.remove();
@@ -96,11 +91,9 @@ function changeSize() {
   divCreator(slider.value);
 }
 
-slider.addEventListener("mouseup", changeSize);
+slider.addEventListener("mouseup", changeGridSize);
 
-//Reset button
-
-resetBtn.addEventListener("click", function () {
+resetButton.addEventListener("click", function () {
   let currentGrid = document.querySelectorAll(".cell");
   currentGrid.forEach((cell) => {
     cell.style.backgroundColor = "white";
