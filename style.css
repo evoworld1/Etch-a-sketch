@@ -16,12 +16,6 @@ html {
   color: var(--main-color);
   height: 100%;
   font-family: var(--font-main);
-  /*background: linear-gradient(45deg, var(--main-color), #9341ff);
-  */
-  background: linear-gradient(
-    hsla(260, 60%, 2%, 0.95) 14%,
-    hsla(192, 56%, 43%, 0.95) fixed
-  );
 }
 
 .header {
